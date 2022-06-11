@@ -1,4 +1,4 @@
-// 定义一个获取用户基本信息的方法
+// 定义一个获取用户基本信息的方法（这里不可以用入口函数）
 function getUserInfo() {
     $.ajax({
         method: "GET",
@@ -7,10 +7,11 @@ function getUserInfo() {
         //     Authorization: localStorage.getItem('token')
         // },
         success: res => {
-            if (res.status !== 0) return layer.msg(res.message)
-            layer.msg(res.message)
+            const { status, message, data } = res
+            if (status !== 0) return layer.msg(message)
+            layer.msg(message)
                 // 将res.data作为参数传入渲染用户信息的方法中进行调用
-            renderAvatar(res.data)
+            renderAvatar(data)
                 // console.log(res.data);
         },
         // complete: res => {
@@ -35,7 +36,7 @@ const renderAvatar = (user) => {
         $('#welcome').html(`欢迎  ${name}`)
             // 添加判断条件，如果获取到的用户信息中的user_pic属性值不为空，则给用户头像盒子的src属性更改为返回数据中的 user.user_(src)
         if (user.user_pic !== null) {
-            $('.layui-nav-img').attr('src', user.user_);
+            $('.layui-nav-img').attr('src', user.user_pic);
             $('.text-avatar').hide()
         } else {
             $('.layui-nav-img').hide();
