@@ -1,8 +1,10 @@
 $(function() {
+    // 添加注册点击事件
     $('#link_reg').on('click', () => {
         $('.login-box').hide();
         $('.reg-box').show();
     });
+    // 添加登录点击事件
     $('#link_login').on('click', () => {
         $('.login-box').show();
         $('.reg-box').hide();
@@ -18,7 +20,7 @@ $(function() {
                 // 先获取到密码框的值
                 const pwd = $('.reg-box [name=password]').val();
                 // 测试是否获取到密码输入框的值
-                // console.log(pwd, value);
+                console.log(pwd, value);
                 // 判断确认密码框中的值是否与输入密码框的值是否一致
                 if (pwd !== value) return "搞仔细点，两次密码不一致"
             }
@@ -44,10 +46,11 @@ $(function() {
                     // 测试回调结果
                     console.log(res);
                     if (res.status !== 0) return layer.msg(res.message);
-                    layer.msg("恭喜你，注册成功！")
-                        // 自动触发点击事件，点击登录跳转到登录页面
+                    layer.msg("恭喜你，注册成功！");
+                    // 自动触发点击事件，点击登录跳转到登录页面
                     $('#link_login').click();
-                }
+                },
+
             })
         })
         // 监听表单提交事件，发送登录请求
@@ -66,7 +69,7 @@ $(function() {
                     // 1:将登录成功后返回的token保存到本地locastorage
                 localStorage.setItem('token', res.token)
                     // 2:跳转到首页index.html
-                    // location.href = '/index.html'
+                location.href = '/index.html'
             }
         })
     })
