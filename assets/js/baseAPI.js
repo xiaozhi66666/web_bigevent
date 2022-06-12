@@ -7,7 +7,7 @@
 $.ajaxPrefilter((options) => {
     // console.log(options);
     // 在请求之前拼接上根路径，以便在发起请求的时候只需要携带上自己的路径就可以了
-    options.url = 'http://www.liulongbin.top:3007' + options.url;
+    options.url = 'http://big-event-api-t.itheima.net' + options.url;
     // 注入token
     // 判断是否url中是否携带 '/my/'的文件
     if (options.url.includes('/my/')) {

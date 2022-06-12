@@ -20,14 +20,16 @@ $(function() {
     $('.layui-form').submit(function(e) {
         e.preventDefault();
         const data = $(this).serialize();
+        // console.log(data);
         $.ajax({
             method: 'POST',
             url: '/my/updatepwd',
             data,
             success: res => {
+                // console.log(res);
                 const { status, message } = res;
                 if (status !== 0) return layer.msg(message);
-                layer.msg(message + '即将2秒后跳转到登录页面', { icon: 1 })
+                layer.msg(message + '即将在2秒后跳转到登录页面', { icon: 1 })
                 setTimeout(() => {
                     localStorage.removeItem('token');
                     window.parent.location.href = '/login.html'

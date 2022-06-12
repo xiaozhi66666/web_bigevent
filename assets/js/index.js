@@ -55,5 +55,9 @@ $('#signOut').click(() => {
         location.href = '/login.html'
     });
 });
+// 定义一个切换高亮的方法
+function changeLight() {
+    $('#artList').addClass('layui-this').next().removeClass('layui-this')
+}
 // 调用获取用户基本信息的方法
 getUserInfo()
